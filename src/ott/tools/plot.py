@@ -567,6 +567,7 @@ def transport_animation(
     padding: float = 0.1,
     interval: int = 300,
     save_path: Optional[str] = None,
+    darkmode: bool = False
 ) -> Union[plt.Figure, animation.FuncAnimation]:
   r"""Create animated visualizations of optimal transport and flow matching.
 
@@ -608,6 +609,7 @@ def transport_animation(
       limits. For example, ``0.1`` adds 10% padding on each side.
     interval: Used for animations, delay between frames in milliseconds.
     save_path: Path where to save the animation/plot.
+    darkmode: whether plotting is done in darkmode.
 
   Returns:
     An animation object if ``n_frames > 1``, otherwise a figure.
@@ -630,7 +632,7 @@ def transport_animation(
   # If we are plotting extra stuff on top of data,
   # data is displayed in low alpha as background
   background = plot_ifm_arrows or plot_transport
-  dict_pk = get_plotkwargs(background=background)
+  dict_pk = get_plotkwargs(background=background, darkmode=darkmode)
 
   # Time parameterization
   times = jnp.linspace(0.0, 1.0, n_frames)
