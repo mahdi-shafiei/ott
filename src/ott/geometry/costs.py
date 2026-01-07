@@ -384,7 +384,7 @@ class NegDotProduct(CostFn):
 
   def barycenter(self, weights: jnp.ndarray,
                  xs: jnp.ndarray) -> Tuple[jnp.ndarray, Any]:
-    """Output usual barycenter of vectors when using NegDotProduct cost."""
+    """Output usual barycenter of vectors."""
     return jnp.average(xs, weights=weights, axis=0), None
 
 
